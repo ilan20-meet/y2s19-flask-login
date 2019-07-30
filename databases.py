@@ -1,5 +1,5 @@
 from model import Base, User
-
+from passlib.apps import custom_app_context as pwd_security
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -10,9 +10,8 @@ session = DBSession()
 
 def add_user(name,secret_word):
     """Add a user to the DB."""
-    user = User(username=name)
-    #there is a line of code missing here, what else does a user need?
-    session.add(user)
+    user_object = User(username=name, password_hash=hash_password(secret_word))
+    session.add(user_object)
     session.commit()
 
 def get_user(username):

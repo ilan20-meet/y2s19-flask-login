@@ -7,9 +7,9 @@ from passlib.apps import custom_app_context as pwd_security
 Base = declarative_base()
 
 class User(Base):
-    __tablename__ = "users"
+    __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    #what else does a user account need?
+    username = Column(String)
     password_hash = Column(String)
 
     def hash_password(self, password):
