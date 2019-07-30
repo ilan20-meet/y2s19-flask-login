@@ -10,7 +10,8 @@ session = DBSession()
 
 def add_user(name,secret_word):
     """Add a user to the DB."""
-    user_object = User(username=name, password_hash=hash_password(secret_word))
+    user_object = User(username=name)
+    user_object.hash_password(secret_word)
     session.add(user_object)
     session.commit()
 
