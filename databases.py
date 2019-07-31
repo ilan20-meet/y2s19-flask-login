@@ -19,4 +19,9 @@ def get_user(username):
     """Find the first user in the DB, by their username."""
     return session.query(User).filter_by(username=username).first()
 
+def update_food(name, food):
+    """Find the first user in the DB, by their username."""
+    user = session.query(User).filter_by(username=name).first()
+    user.fav_food = food
+    session.commit()
 

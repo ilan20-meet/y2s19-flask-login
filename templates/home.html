@@ -4,6 +4,7 @@ Login form WITH session!
 
 {%if session['logged_in']%}
 Hi {{session['name']}}, you are logged in.
+Your current favourite food is: {{fav_food}}
 {%endif%}
 
 <form action="/login" method="POST">
